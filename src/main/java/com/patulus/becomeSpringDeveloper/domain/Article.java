@@ -10,6 +10,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 // 엔티티로 지정
 @Entity
@@ -68,6 +72,16 @@ public class Article {
 
     @Column(name = "content", nullable = false)
     private String content;
+
+    // 엔티티가 생성된 시간을 저장
+    @CreatedDate
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    // 엔티티가 마지막으로 수정된 시간을 저장
+    @LastModifiedDate
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     // Builder 패턴 방식으로 객체 생성
     // Builder 패턴 방식이 아니라면, Article("제목일까요?", "내용일까요?"); : 어떤 필드의 값인지 알기 어려움
