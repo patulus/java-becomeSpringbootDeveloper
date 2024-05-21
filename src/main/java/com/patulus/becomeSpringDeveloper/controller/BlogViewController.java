@@ -29,7 +29,7 @@ public class BlogViewController {
     }
 
     @GetMapping("/articles/{id}")
-    public String getArticle(Model model, @PathVariable long id) {
+    public String getArticle(Model model, @PathVariable(name = "id") long id) {
         Article article = blogService.findById(id);
 
         model.addAttribute("article", article);
