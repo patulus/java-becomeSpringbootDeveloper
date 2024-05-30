@@ -2,6 +2,7 @@ package com.patulus.becomeSpringDeveloper.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,6 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
@@ -32,6 +34,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 // 모든 필드를 파라미터로 하는 생성자를 만드는 Lombok 어노테이션 (access를 지정하지 않으면 접근 지시자는 public)
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Article {
     // id 필드를 기본 키로 지정
     @Id
